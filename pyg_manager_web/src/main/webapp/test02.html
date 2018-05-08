@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="plugins/angularjs/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("pyg",[]);
+        app.controller("hellocontroller",function ($scope) {
+            $scope.nnn=function () {
+
+                alert( "xxxx");
+            }
+            $scope.checking=function () {
+
+                $scope.bbb={function(){
+                    return !$scope.aaa;
+                    }}
+                }
+
+        })
+    </script>
+</head>
+<div ng-app="pyg" ng-controller="hellocontroller" ng-init="checking">
+
+    <p>
+
+    <button ng-disabled="bbb">点我！</button>
+
+    </p>
+
+    <p>
+
+   <input type="checkbox"  ng-checked="bbb">按钮
+
+   </p>
+
+    </div>
+
+
+</html>
