@@ -19,7 +19,10 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
     private TbTypeTemplateMapper typeTemplateMapper;
     @Override
     public List<TbTypeTemplate> findAll() {
+
         List<TbTypeTemplate> list = typeTemplateMapper.selectByExample(null);
+
+
         return list;
     }
 
@@ -85,6 +88,8 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
         PageHelper.startPage(pageNum,pageSize);
         TbTypeTemplateExample example = new TbTypeTemplateExample();
         TbTypeTemplateExample.Criteria criteria = example.createCriteria();
+
+
         if (searchStr != null && searchStr != "") {
 
             criteria.andNameLike("%" + searchStr + "%");

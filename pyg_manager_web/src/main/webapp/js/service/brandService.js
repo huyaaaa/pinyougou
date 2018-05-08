@@ -37,4 +37,7 @@ app.service("brandService",
         this.dele=function(selectedItems){
             return $http.get("../brand/delete?ids="+selectedItems);
         }
+        this.selectBrandMapList=function () {
+            return $http.get("../brand/selectBrandList");
+        }
     })

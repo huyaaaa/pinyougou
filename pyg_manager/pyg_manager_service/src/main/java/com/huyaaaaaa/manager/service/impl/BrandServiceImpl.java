@@ -12,6 +12,8 @@ import com.huyaaaaaa.utils.PygResult;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class BrandServiceImpl implements BrandService {
     @Autowired
@@ -20,6 +22,7 @@ public class BrandServiceImpl implements BrandService {
     public List<TbBrand> findAll() {
 
         List<TbBrand> list = tbrandMapper.selectByExample(null);
+
 
         return list;
     }
@@ -101,6 +104,12 @@ public class BrandServiceImpl implements BrandService {
         List<TbBrand> tbBrands = tbrandMapper.selectByExample(example);
         PageInfo<TbBrand> pageInfo = new PageInfo<>(tbBrands);
         return new PageResult<TbBrand>(pageInfo.getTotal(),tbBrands);
+    }
+
+    @Override
+    public List<Map> selectBrandMapList() {
+        List<Map> mapList = tbrandMapper.selectBrandMapList();
+        return mapList;
     }
 
 

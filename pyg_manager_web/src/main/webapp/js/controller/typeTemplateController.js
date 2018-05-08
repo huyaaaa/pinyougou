@@ -2,7 +2,7 @@ app.controller("typeTemplateController",
 
     //继承base
 
-    function($scope,$controller,typeTemplateService) {
+    function($scope,$controller,typeTemplateService,brandService,specificationService) {
 
         $controller("baseController",{$scope:$scope});
         //查找所有
@@ -19,7 +19,7 @@ app.controller("typeTemplateController",
 
             typeTemplateService.findOne(id).success(
                 function(data) {
-                    $scope.items = data;
+                    $scope.entity = data;
                 })
         }
 
@@ -36,10 +36,10 @@ app.controller("typeTemplateController",
         $scope.add=function () {
             //定义一个对象接受调用servise中的return
             var addOrUpdate;
-            if ($scope.items.id!=null){
-                addOrUpdate=typeTemplateService.update($scope.items);
+            if ($scope.entity.id!=null){
+                addOrUpdate=typeTemplateService.update($scope.entity);
             }else{
-                addOrUpdate=typeTemplateService.add($scope.items);
+                addOrUpdate=typeTemplateService.add($scope.entity);
             }
             addOrUpdate.success(function (data) {
                 if (data.success){
@@ -72,6 +72,33 @@ app.controller("typeTemplateController",
             typeTemplateService.search(page,rows,$scope.searchStr).success(function (data) {
                 $scope.list = data.rows;
                 $scope.paginationConf.totalItems = data.total;
+            })
+        }
+        
+        //展示格式化
+        $scope.strToJson= function (str,key) {
+            var parse = JSON.parse(str);
+            var value="";
+            for (var i=0;i<parse.length;i++) {
+                if (i>0){
+                    value+=",";
+                }
+                value+=parse[i][key];
+
+            }
+            return value;
+        }
+
+        $scope.brandList={};
+        $scope.findBrandList=function () {
+            brandService.selectBrandMapList().success(function (data) {
+                $scope.brandList={data:data};
+            })
+        }
+        $scope.specificationList={};
+        $scope.findSpecificationList=function () {
+            specificationService.selectSpecMapList().success(function (data) {
+                $scope.specificationList={data:data};
             })
         }
     })

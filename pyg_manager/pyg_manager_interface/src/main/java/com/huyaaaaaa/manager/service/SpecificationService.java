@@ -6,6 +6,7 @@ import com.huyaaaaaa.utils.PygResult;
 import com.huyaaaaaa.vo.Specification;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SpecificationService {
     List<TbSpecification> findAll();
@@ -20,4 +21,6 @@ public interface SpecificationService {
     PygResult delete(Long[] ids);
 
     PageResult<TbSpecification> search(Integer page, Integer rows, String searchStr);
+
+    List<Map> selectSpecMapList();
 }

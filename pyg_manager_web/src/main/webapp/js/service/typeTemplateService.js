@@ -23,14 +23,14 @@ app.service("typeTemplateService",
         }
 
         //添加单个
-        this.add=function(items){
+        this.add=function(entity){
 
-            return $http.post("../typeTemplate/add",items);
+            return $http.post("../typeTemplate/add",entity);
         }
 
         //修改单个
-        this.update=function(items){
-            return $http.post("../typeTemplate/update",items);
+        this.update=function(entity){
+            return $http.post("../typeTemplate/update",entity);
         }
 
         //删除操作

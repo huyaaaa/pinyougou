@@ -3,7 +3,7 @@ app.controller("baseController",
 
         //刷新方法
         $scope.reloadList = function () {
-           // alert('reloasd');
+
             $scope.search($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage)
         }
 

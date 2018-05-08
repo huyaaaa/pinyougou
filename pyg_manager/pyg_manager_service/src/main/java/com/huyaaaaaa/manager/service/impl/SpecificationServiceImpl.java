@@ -15,6 +15,7 @@ import com.huyaaaaaa.vo.Specification;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SpecificationServiceImpl implements SpecificationService {
@@ -24,7 +25,7 @@ public class SpecificationServiceImpl implements SpecificationService {
     private TbSpecificationOptionMapper tbSpecificationOptionMapper;
     @Override
     public List<TbSpecification> findAll() {
-
+        System.out.println("test-1");
         List<TbSpecification> list = tbSpecificationMapper.selectByExample(null);
 
         return list;
@@ -114,6 +115,13 @@ public class SpecificationServiceImpl implements SpecificationService {
         List<TbSpecification> tbSpecifications = tbSpecificationMapper.selectByExample(example);
         PageInfo<TbSpecification> pageInfo = new PageInfo<>(tbSpecifications);
         return new PageResult<TbSpecification>(pageInfo.getTotal(),tbSpecifications);
+    }
+
+    @Override
+    public List<Map> selectSpecMapList() {
+        List<Map> mapList = tbSpecificationMapper.selectSpecMapList();
+        return mapList;
+
     }
 
 

@@ -180,4 +180,7 @@
       first_char = #{firstChar,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectBrandMapList" resultType="map">
+    SELECT id,name as text from  tb_brand
+  </select>
 </mapper>

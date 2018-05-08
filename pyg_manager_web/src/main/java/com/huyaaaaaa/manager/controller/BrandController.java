@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("brand")
@@ -60,6 +61,11 @@ public class BrandController {
        // System.out.println(mcr.getMessage());
         PageResult<TbBrand> page1 = brandService.search(page, rows,mcr==null?"":mcr.getMessage());
         return page1;
+    }
+    @RequestMapping("selectBrandList")
+    public List selectBrandList(){
+        List<Map> list = brandService.selectBrandMapList();
+        return list;
     }
 
 }

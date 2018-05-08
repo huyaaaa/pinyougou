@@ -37,4 +37,7 @@ app.service("specificationService",
         this.dele=function(selectedItems){
             return $http.get("../specification/delete?ids="+selectedItems);
         }
+        this.selectSpecMapList=function () {
+            return $http.get("../specification/selectSpecMapList")
+        }
     })

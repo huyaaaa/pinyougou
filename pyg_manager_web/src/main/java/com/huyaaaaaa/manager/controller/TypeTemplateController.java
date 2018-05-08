@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("typetemplate")
+@RequestMapping("typeTemplate")
 public class TypeTemplateController {
     @Reference
     TypeTemplateService typetemplateService;
@@ -58,7 +58,7 @@ public class TypeTemplateController {
                                @RequestParam(defaultValue = "10") Integer rows,
                                @RequestBody MessageChnResolver mcr){
        // System.out.println(mcr.getMessage());
-        PageResult<TbTypeTemplate> page1 = typetemplateService.search(page, rows,mcr==null?"":mcr.getMessage());
+        PageResult<TbTypeTemplate> page1 = typetemplateService.search(page, rows,mcr.getMessage());
         return page1;
     }
 

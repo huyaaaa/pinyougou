@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("specification")
@@ -63,5 +64,9 @@ public class SpecificationController {
         System.out.println(page1.getRows().get(0));
         return page1;
     }
-
+    @RequestMapping("selectSpecMapList")
+    public List<Map> selectSpecMapList(){
+        List<Map> mapList = specificationService.selectSpecMapList();
+        return mapList;
+    }
 }
