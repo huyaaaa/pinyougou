@@ -19,7 +19,12 @@ app.controller("typeTemplateController",
 
             typeTemplateService.findOne(id).success(
                 function(data) {
-                    $scope.entity = data;
+                    $scope.entity =data;
+
+
+                    $scope.entity.brandIds=JSON.parse(data.brandIds);
+                    $scope.entity.specIds=JSON.parse(data.specIds);
+                    $scope.entity.customAttributeItems=JSON.parse(data.customAttributeItems);
                 })
         }
 
@@ -100,5 +105,13 @@ app.controller("typeTemplateController",
             specificationService.selectSpecMapList().success(function (data) {
                 $scope.specificationList={data:data};
             })
+        }
+        $scope.addTableRow=function () {
+            $scope.entity.customAttributeItems.push({});
+        }
+
+        //删除行
+        $scope.removeTableRow=function (index) {
+            $scope.entity.customAttributeItems.splice(index,1);
         }
     })

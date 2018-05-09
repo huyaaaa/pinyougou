@@ -20,6 +20,8 @@ app.controller("specificationController",
             specificationService.findOne(id).success(
                 function(data) {
                     $scope.entity = data;
+                    $scope.entity.tbSpecification.specName=JSON.parse(data.tbSpecification.specName);
+                    $scope.entity.list=JSON.parse(data.list);
                 })
         }
 

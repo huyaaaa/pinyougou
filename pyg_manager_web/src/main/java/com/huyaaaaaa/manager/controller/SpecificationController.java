@@ -1,6 +1,7 @@
 package com.huyaaaaaa.manager.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.huyaaaaaa.manager.service.SpecificationOptionService;
 import com.huyaaaaaa.manager.service.SpecificationService;
 import com.huyaaaaaa.pojo.TbSpecification;
 import com.huyaaaaaa.utils.MessageChnResolver;
@@ -20,6 +21,9 @@ import java.util.Map;
 public class SpecificationController {
     @Reference
     SpecificationService specificationService;
+    @Reference
+    SpecificationOptionService specificationOptionService;
+
 
     @RequestMapping("findAll")
     public List<TbSpecification> findAll(){
@@ -41,9 +45,11 @@ public class SpecificationController {
     }
 
     @RequestMapping("findOne")
-    public TbSpecification findOne(Long id){
-        TbSpecification one = specificationService.findOne(id);
-        return one;
+    public Specification findOne(Long id){
+        Specification specification = new Specification();
+        specification.setTbSpecification(specificationService.findOne(id));
+        specification.setList(specificationOptionService.findbyId(id));
+        return specification;
     }
     @RequestMapping("update")
     public PygResult update(@RequestBody  Specification specification){
