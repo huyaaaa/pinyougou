@@ -14,5 +14,31 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 	<http pattern="/js/**" security="none"></http>
 	<http pattern="/plugins/**" security="none"></http>
 	<!--访问规则-->
+    <http>
+        <!-- 访问规则,角色配置 -->
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <!-- 表单登录访问规则 -->
+        <form-login login-page="/login.html"
+                    login-processing-url="/login"
+                    default-target-url="/admin/index.html"
+                    authentication-failure-url="/login_error.html"
+                    always-use-default-target="true"/>
+        <!-- 跨站请求伪造 -->
+        <csrf disabled="true"/>
+        <!-- iframe框架访问控制 -->
+        <headers>
+            <frame-options policy="SAMEORIGIN"/>
+        </headers>
+        <!-- 注销 -->
+        <logout logout-success-url="/login.html"/>
+    </http>
+    <!-- 认证管理器 -->
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="admin" password="admin" authorities="ROLE_USER"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
 	
 </beans:beans>
