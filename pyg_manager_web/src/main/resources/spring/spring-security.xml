@@ -14,7 +14,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 	<http pattern="/js/**" security="none"></http>
 	<http pattern="/plugins/**" security="none"></http>
 	<!--访问规则-->
-    <http>
+    <http use-expressions="false">
         <!-- 访问规则,角色配置 -->
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
         <!-- 表单登录访问规则 -->
